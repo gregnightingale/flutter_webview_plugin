@@ -20,7 +20,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.2'
+        classpath 'com.android.tools.build:gradle:3.4.2'
     }
 }
 
@@ -37,7 +37,7 @@ android {
 
     defaultConfig {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        // NOTE(jeffmikels): When targetSdkVersion or minSdkVersion is not set or < 4, gradle adds 
+        // NOTE(jeffmikels): When targetSdkVersion or minSdkVersion is not set or < 4, gradle adds
         // additional scary permissions such as WRITE_EXTERNAL_STORAGE and READ_PHONE_STATE.
         minSdkVersion 16
     }
@@ -46,5 +46,5 @@ android {
     }
 }
 dependencies {
-    implementation group: 'androidx.appcompat', name: 'appcompat', version: '1.0.0'
+    implementation group: 'androidx.appcompat', name: 'appcompat', version: '1.0.2'
 }

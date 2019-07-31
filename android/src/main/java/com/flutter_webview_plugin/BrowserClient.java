@@ -2,7 +2,9 @@ package com.flutter_webview_plugin;
 
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
+import android.net.http.SslError;
 import android.os.Build;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
@@ -87,6 +89,12 @@ public class BrowserClient extends WebViewClient {
 
         FlutterWebviewPlugin.channel.invokeMethod("onState", data);
         return isInvalid;
+    }
+
+    @Override
+    public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+        handler.proceed();
+//        super.onReceivedSslError(view, handler, error);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
