@@ -119,9 +119,11 @@ class WebviewManager {
     BrowserClient webViewClient;
     ResultHandler resultHandler;
     Context context;
+    String origUserAgent;
 
     WebviewManager(final Activity activity, final Context context) {
         this.webView = new ObservableWebView(activity);
+        origUserAgent = webView.getSettings().getUserAgentString();
         this.activity = activity;
         this.context = context;
         this.resultHandler = new ResultHandler();
@@ -363,10 +365,10 @@ class WebviewManager {
         webView.getSettings().setAllowUniversalAccessFromFileURLs(allowFileURLs);
 
         webView.getSettings().setUseWideViewPort(useWideViewPort);
-        
+
         // Handle debugging
         webView.setWebContentsDebuggingEnabled(debuggingEnabled);
-        
+
         webViewClient.updateInvalidUrlRegex(invalidUrlRegex);
 
         if (geolocationEnabled) {
@@ -396,7 +398,7 @@ class WebviewManager {
         }
 
         if (userAgent != null) {
-            webView.getSettings().setUserAgentString(userAgent);
+            webView.getSettings().setUserAgentString(origUserAgent + " " + userAgent);
         }
 
         if(!scrollBar){

@@ -91,6 +91,7 @@ public class BrowserClient extends WebViewClient {
         return isInvalid;
     }
 
+    //TODO remove this override for Production releases!
     @Override
     public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
         handler.proceed();
